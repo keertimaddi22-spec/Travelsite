@@ -13,7 +13,6 @@ function FormPage({ onBack }) {
   const [message, setMessage] = useState("");
   const [trips, setTrips] = useState([]);
 
-  // ✅ Load saved trips once when component mounts
   useEffect(() => {
     const saved = localStorage.getItem("trips");
     if (saved) {
@@ -26,7 +25,6 @@ function FormPage({ onBack }) {
     }
   }, []);
 
-  // ✅ Save trips when state changes
   useEffect(() => {
     localStorage.setItem("trips", JSON.stringify(trips));
   }, [trips]);
@@ -87,7 +85,6 @@ function FormPage({ onBack }) {
         </div>
       </form>
 
-      {/* ✅ Modal */}
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-box" onClick={(e) => e.stopPropagation()}>
@@ -100,7 +97,6 @@ function FormPage({ onBack }) {
         </div>
       )}
 
-      {/* ✅ Simple Saved Trips List */}
       {trips.length > 0 && (
         <div className="saved-trips">
           <h4>Previous Trips:</h4>
